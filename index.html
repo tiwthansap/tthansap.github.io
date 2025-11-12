@@ -1,180 +1,291 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | ฐานทรัพย์ หาญเชิงชัย</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>beemcraf | GitHub.io Portfolio</title>
+  <meta name="description" content="Portfolio ของ Naphat Wapeesiri – นักศึกษามหาวิทยาลัยราชภัฏอุดรธานี สนใจด้าน AI, Data, Web Development และ Cybersecurity"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    body {
-      font-family: "Prompt", sans-serif;
-      background-color: #f8f9fa;
-      color: #222;
+    :root{
+      --bg:#0a0e27; --card:#1a1f3a; --text:#e8eaf6; --muted:#9fa8da; --accent:#7c4dff;
+      --border:#2a2f4a; --pill:#252a45; --shadow:0 8px 26px rgba(0,0,0,.4);
     }
-    header {
-      background: linear-gradient(90deg, #202020, #3a3a3a);
-      color: white;
-      padding: 60px 0;
-      text-align: center;
-    }
-    header img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      margin-bottom: 15px;
-    }
-    h2 {
-      border-left: 5px solid #dc3545;
-      padding-left: 10px;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      color: #dc3545;
-    }
-    footer {
-      background: #202020;
-      color: #ccc;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-    a {
-      color: #dc3545;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .btn-danger {
-      margin-top: 10px;
-    }
+    *{box-sizing:border-box;transition:color .2s,background .2s,border-color .2s,opacity .2s}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Sarabun',system-ui,Segoe UI,Arial;position:relative;overflow-x:hidden}
+    body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0a0e27 0%,#1a1f3a 50%,#0f1428 100%);z-index:-2}
+    .animated-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
+    .animated-bg span{position:absolute;display:block;width:20px;height:20px;background:rgba(124,77,255,.15);animation:float 25s infinite;border-radius:50%}
+    .animated-bg span:nth-child(1){left:25%;animation-delay:0s;width:80px;height:80px}
+    .animated-bg span:nth-child(2){left:10%;animation-delay:2s;width:20px;height:20px}
+    .animated-bg span:nth-child(3){left:70%;animation-delay:4s;width:40px;height:40px}
+    .animated-bg span:nth-child(4){left:40%;animation-delay:0s;width:60px;height:60px}
+    .animated-bg span:nth-child(5){left:65%;animation-delay:3s;width:30px;height:30px}
+    .animated-bg span:nth-child(6){left:75%;animation-delay:7s;width:50px;height:50px}
+    .animated-bg span:nth-child(7){left:35%;animation-delay:5s;width:35px;height:35px}
+    .animated-bg span:nth-child(8){left:50%;animation-delay:9s;width:45px;height:45px}
+    .animated-bg span:nth-child(9){left:20%;animation-delay:6s;width:25px;height:25px}
+    .animated-bg span:nth-child(10){left:85%;animation-delay:8s;width:55px;height:55px}
+    @keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
+    @keyframes glow{0%,100%{box-shadow:0 0 20px rgba(124,77,255,.3)}50%{box-shadow:0 0 40px rgba(124,77,255,.6),0 0 60px rgba(124,77,255,.4)}}
+    @keyframes slideIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+    a{color:var(--accent);text-decoration:none}
+    .container{width:min(960px,92%);margin:auto}
+    section{padding:32px 0;animation:slideIn .8s ease-out}
+    h1,h2,h3{margin:0 0 10px}
+    h2.section-title{font-family:'Prompt';font-size:24px;font-weight:700;border-left:4px solid var(--accent);padding-left:12px;margin-bottom:16px;position:relative;display:inline-block}
+    h2.section-title::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}
+    h2.section-title:hover::after{width:100%}
+    header.site{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+      background:rgba(26,31,58,.85);border-bottom:1px solid var(--border);padding:10px 0}
+    .nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{font-family:'Prompt';font-weight:700;display:flex;gap:8px;align-items:center}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#7c4dff,#b388ff);box-shadow:0 0 10px rgba(124,77,255,.5);animation:pulse 2s ease-in-out infinite}
+    .nav a{margin:0 8px;color:var(--text);opacity:.85;font-size:14px;position:relative;padding:5px 0;transition:all .3s}
+    .nav a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:var(--accent);transition:all .3s;transform:translateX(-50%)}
+    .nav a:hover{opacity:1;color:var(--accent)}
+    .nav a:hover::after{width:100%}
+    .theme-toggle{display:none}
+    .grid{display:grid;gap:16px}
+    .grid.cols-1{grid-template-columns:1fr}
+    .grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);backdrop-filter:blur(10px);animation:slideIn .6s ease-out;position:relative;overflow:hidden}
+    .card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent,rgba(124,77,255,.1),transparent);transform:rotate(45deg);transition:all .5s}
+    .card:hover::before{left:100%}
+    .card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(124,77,255,.25);border-color:var(--accent)}
+    .card > * + *{margin-top:12px}
+    .card p{margin:0;line-height:1.85}
+    .muted{color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;
+      border:1px solid var(--accent);background:var(--card);box-shadow:var(--shadow);font-size:14px;color:var(--text)}
+    .btn:hover{background:var(--accent);color:#fff;transform:translateY(-2px);box-shadow:0 12px 30px rgba(124,77,255,.3)}
+    .project-img{width:100%;display:block;border-radius:14px;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;border:2px solid transparent}
+    .project-img:hover{transform:scale(1.05);box-shadow:0 15px 35px rgba(124,77,255,.4);border-color:var(--accent)}
+    .nice-bullets{margin:6px 0 0 18px;line-height:1.75}
+    .contact-list{list-style:none;padding:0;margin:0}
+    .contact-list li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed var(--border)}
+    .contact-list li:last-child{border-bottom:none}
+    .contact-list a{color:var(--text);text-decoration:none;transition:all .3s}
+    .contact-list a:hover{color:var(--accent);transform:translateX(5px);display:inline-block}
+    .contact-list i{transition:transform .3s,color .3s}
+    .contact-list li:hover i{transform:scale(1.2);color:var(--accent)}
+    footer{padding:36px 0 18px;color:var(--muted);border-top:1px solid var(--border);text-align:center;font-size:14px}
+    .center{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    img.round{border-radius:50%;width:150px;height:150px;object-fit:cover;display:block;margin:0 auto;border:4px solid var(--accent);box-shadow:0 0 30px rgba(124,77,255,.5);animation:glow 3s infinite,pulse 2s ease-in-out infinite;transition:transform .3s}
+    img.round:hover{transform:scale(1.1) rotate(5deg)}
+    /* Education bullets */
+    .edu-list{list-style:none;margin:0;padding:0}
+    .edu-list li{display:flex;gap:12px;align-items:flex-start;margin:14px 0;line-height:1.75}
+    .edu-list .dot{width:10px;height:10px;border-radius:50%;background:#2ecc71;margin-top:8px;flex-shrink:0;box-shadow:0 0 10px rgba(46,204,113,.6);animation:pulse 2s ease-in-out infinite}
+    .edu-list .edu-meta{color:var(--muted);margin-top:2px;display:block}
   </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
-    <img src="https://i.ibb.co/5s7nScT/profile.png" alt="Profile">
-    <h1>ฐานทรัพย์ หาญเชิงชัย (Thansap Hancheongchai)</h1>
-    <p>นักศึกษาคณะวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์</p>
-    <p>มหาวิทยาลัยราชภัฏอุดรธานี</p>
-    <a href="#" class="btn btn-danger btn-sm">📄 ดาวน์โหลดเรซูเม่</a>
+  <div class="animated-bg">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <header class="site"></header>
+    <div class="container nav">
+      <div class="brand"><span class="dot"></span> tthansap</div>
+      <nav>
+        <a href="#intro">แนะนำตัว</a>
+        <a href="#about">เกี่ยวกับฉัน</a>
+        <a href="#skills">ทักษะ</a>
+        <a href="#projects">ผลงาน</a>
+        <a href="#activities">กิจกรรม</a>
+        <a href="#education">การศึกษา</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#goals">เป้าหมาย</a>
+        <a href="#contact">ติดต่อ</a>
+      </nav>
+      <button class="theme-toggle" id="toggleTheme" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    </div>
   </header>
 
-  <main class="container my-5">
+  <main class="container">
+    <!-- Intro -->
+    <section id="intro" class="grid cols-2">
+      <div class="card">
+        <h1>สวัสดีครับ ผมชื่อ <span style="font-weight:700;color:var(--accent)">thansap hancheongchai</span></h1>
+        <p class="muted">ปัจจุบันกำลังศึกษาระดับปริญญาตรี คณะวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยราชภัฏอุดรธานี (UDRU)<br>มีความสนใจในด้านการพัฒนาเว็บไซต์ การเขียนโปรแกรม และการออกแบบฐานข้อมูล ปัจจุบันกำลังเรียนรู้และพัฒนาโครงการต่าง ๆ ที่เกี่ยวข้องกับระบบจัดการข้อมูล (Database Management Systems) และการสร้างแอปพลิเคชันด้วยเทคโนโลยีสมัยใหม่ เช่น Flutter, C#, SQL Server และ HTML/CSS/JavaScript และ Cybersecurity</p>
+        <div>
+          <a class="btn" href="https://github.com/tiwthansap" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a class="btn" href="#contact"><i class="fa-solid fa-envelope"></i> ติดต่อ</a>
+        </div>
+      </div>
+     <div class="card center">
+  <img src="https://cdn.discordapp.com/attachments/856807500853805066/1438187961152831582/112.jpg?ex=6915f86a&is=6914a6ea&hm=c9c72e3c37291573dcccc791ebfa73d5244fe37459c5ae7e0e80e94bbfec27d1&" alt="Profile" class="round">
+  <p class="muted">รูปโปรไฟล์</p>
+</div>
+    </section>
 
-    <!-- Profile -->
-    <section>
-      <h2>1. ส่วนแนะนำตัว (Profile)</h2>
-      <p>
-        สวัสดีครับ ผมชื่อ <b>ฐานทรัพย์ หาญเชิงชัย</b> เป็นนักศึกษาคณะวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์ 
-        มหาวิทยาลัยราชภัฏอุดรธานี ผมมีความสนใจในด้าน <b>Artificial Intelligence (AI)</b>, 
-        <b>Web Development</b> และ <b>Data Science</b> และต้องการพัฒนาทักษะด้านการเขียนโปรแกรมและการวิเคราะห์ข้อมูล
-        เพื่อสร้างสรรค์เทคโนโลยีที่ช่วยแก้ปัญหาในชีวิตจริงได้
-      </p>
-      <p>
-        ปัจจุบันผมกำลังศึกษาการพัฒนาเว็บแอปพลิเคชันด้วยภาษา Python และ JavaScript 
-        รวมถึงการประยุกต์ใช้ Machine Learning ในการวิเคราะห์ข้อมูลเชิงลึก เช่น การพยากรณ์แนวโน้มและพฤติกรรมของผู้ใช้
-      </p>
-      <p>
-        เป้าหมายของผมคือการเป็น <b>AI Engineer</b> หรือ <b>Data Scientist</b> 
-        ที่สามารถใช้เทคโนโลยีเพื่อขับเคลื่อนองค์กรและสร้างนวัตกรรมใหม่ ๆ ได้อย่างมีประสิทธิภาพ
-      </p>
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-title">เกี่ยวกับฉัน (About Me)</h2>
+      <div class="card">
+        <p><strong>ผมชื่อ นายฐานทรัพย์ หาญเชิงชัย</strong> (ชื่อเล่น: ทิว) ปัจจุบันกำลังศึกษาอยู่ที่
+        <strong>มหาวิทยาลัยราชภัฏอุดรธานี</strong> และมุ่งมั่นเติบโตในสายงาน <strong>เทคโนโลยีสารสนเทศ (IT)</strong></p>
+        <p class="muted">จุดแข็ง: รับผิดชอบสูง ใฝ่เรียนรู้ และพัฒนาทักษะอย่างต่อเนื่อง </p>
+      </div>
     </section>
 
     <!-- Skills -->
-    <section>
-      <h2>2. ทักษะ (Skills)</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <h5>Hard Skills</h5>
-          <ul>
-            <li>Programming: Python, Java, HTML/CSS, JavaScript</li>
-            <li>AI & Data: TensorFlow, Scikit-learn, Power BI, SQL</li>
-            <li>Tools: Git, VS Code, Figma, Google Colab</li>
-          </ul>
+    <section id="skills">
+      <h2 class="section-title">ทักษะ (Skills)</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Programming / Web Development</h3>
+          <p>Python(พื้นฐาน), Java(พื้นฐาน), HTML / CSS(พื้นฐาน), C Language(พื้นฐาน), PHP(พื้นฐาน), SQL(พื้นฐาน)</p>
         </div>
-        <div class="col-md-6">
-          <h5>Soft Skills</h5>
-          <ul>
-            <li>การสื่อสารและการนำเสนอ</li>
-            <li>การทำงานเป็นทีม</li>
-            <li>การแก้ปัญหาเชิงวิเคราะห์</li>
-            <li>ความรับผิดชอบและการบริหารเวลา</li>
-          </ul>
+        <div class="card">
+          <h3>Tools</h3>
+          <p>GitHub, VS Code, Figma, Google Colab, Microsoft Office</p>
         </div>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section>
-      <h2>3. ผลงานที่ผ่านมา (Projects / Portfolio)</h2>
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">ระบบจองห้องประชุมออนไลน์</h5>
-              <p class="card-text">เว็บแอปพลิเคชันที่ช่วยให้ผู้ใช้สามารถจองห้องเรียน/ห้องประชุมผ่านระบบออนไลน์ พร้อมระบบล็อกอินและยืนยันสิทธิ์</p>
-              <a href="https://github.com/tiwthansap" class="btn btn-outline-danger btn-sm" target="_blank">ดูโปรเจกต์</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">AI ทำนายโรคเบาหวาน</h5>
-              <p class="card-text">โปรเจกต์ Machine Learning ที่ใช้ข้อมูลสุขภาพมาทำนายความเสี่ยงของโรคเบาหวานโดยใช้โมเดล Logistic Regression</p>
-              <a href="https://github.com/tiwthansap" class="btn btn-outline-danger btn-sm" target="_blank">ดูโปรเจกต์</a>
-            </div>
-          </div>
-        </div>
-      </div>
+   <!-- Projects -->
+<section id="projects">
+  <h2 class="section-title">ผลงาน (Projects)</h2>
+
+  <article class="card">
+    <h3>ออกแบบเว็บขายสินค้า (Shop Teenee) – Figma</h3>
+    <img src="https://cdn.discordapp.com/attachments/856807500853805066/1438189648194179112/image.png?ex=6915f9fc&is=6914a87c&hm=7f954b0842ffd1fb1f7e51939f76fa31981175ea08d314363ea98747cb1dc1b0&"
+     class="project-img"
+     alt="Shoe Shop Web Design"
+     style="width: 300px; height: auto; border-radius: 10px;">
+
+  <article class="card">
+    <h3>ระบบทำนายโอกาสเป็น Down syndrome </h3>
+   <img src="https://cdn.discordapp.com/attachments/856807500853805066/1438192463088189522/image.png?ex=6915fc9b&is=6914ab1b&hm=af1e1015baf3cc558b706cb8f49e5f4d83522323301bf2aefbe31d83e6dd11db&"
+     class="project-img"
+     alt="Shoe Shop Web Design"
+     style="width: 300px; height: auto; border-radius: 10px;">
+
+ 
+    <!-- Activities -->
+    <section id="activities">
+      <h2 class="section-title">กิจกรรมที่เคยทำ (Activities)</h2>
+      <div class="card center">
+        <ul class="nice-bullets" style="text-align:left;display:inline-block">
+          <li>เข้าร่วมกิจกรรม <strong>การให้ความรู้เกี่ยวกับการเป็นไข้เลือดออก</strong></li>
+          <li>เข้าร่วมทำเกมส์สร้างสรรค์ให้น้องๆ <strong>จัดทำอุปกรณ์ที่ใช้ในการให้ความรู้แก้น้องๆ</strong></li>
+          <li>รับหน้าที่เป็น <strong>ผู้ดูแลน้องนักเรียน</strong> ในโครงการสอนน้องระดับประถมศึกษา</li>
+        </ul>
+        <img src="https://cdn.discordapp.com/attachments/856807500853805066/1438193926669602940/IMG_8557.jpg?ex=6915fdf8&is=6914ac78&hm=5def785a7134cdcb70689d2f9ff9a09bd3a06d9f2390779d123bb94d4ae768f8&" 
+     alt="กิจกรรมอบรมการจัดการขยะ" 
+     style="width:100%;max-width:700px;border-radius:14px;margin-top:14px">
+<p class="muted">ภาพกิจกรรม: การให้ความรู้เกี่ยวกับการเป็นไข้เลือดออกแก่น้องๆ</p>
+</div>
     </section>
 
     <!-- Education -->
-    <section>
-      <h2>4. การศึกษา (Education)</h2>
-      <ul>
-        <li>คณะวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์</li>
-        <li>มหาวิทยาลัยราชภัฏอุดรธานี (2566–ปัจจุบัน)</li>
-        <li>ผลการเรียนเฉลี่ยสะสม (GPA): 3.65</li>
-      </ul>
+    <section id="education">
+      <h2 class="section-title">การศึกษา (Education)</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>ประวัติการศึกษา</h3>
+          <ul class="edu-list">
+            <li><div class="dot"></div><div><strong>ระดับ ปวช.:</strong> โรงเรียนแก่นนครวิทยาลัย <span class="edu-meta">2560 • เกรดเฉลี่ย 2.89</span></div></li>
+            <li><div class="dot"></div><div><strong>กำลังศึกษาอยู่:</strong> มหาวิทยาลัยราชภัฏอุดรธานี <span class="edu-meta">2566 – ปัจจุบัน • เกรดเฉลี่ย 2.70</span></div></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Soft Skills</h3>
+          <ul class="nice-bullets">
+            <li>การสื่อสารอย่างมีประสิทธิภาพ</li>
+            <li>การทำงานร่วมกับผู้อื่น</li>
+            <li>การแก้ปัญหาอย่างเป็นระบบ</li>
+            <li>การบริหารเวลาและความรับผิดชอบ</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Activities -->
-    <section>
-      <h2>5. กิจกรรมและผลงานอื่น ๆ (Activities / Achievements)</h2>
-      <ul>
-        <li>ผู้เข้าร่วมอบรม “AI for Beginners by Microsoft”</li>
-        <li>เข้าร่วมแข่งขัน UDRU Hackathon 2025</li>
-        <li>ได้รับรางวัลชนะเลิศโครงงานด้าน </li>
-      </ul>
+    <!-- Certificates -->
+    <section id="certificates">
+      <h2 class="section-title">Certificates</h2>
+      <div class="grid cols-2">
+        <div class="card center">
+          <h3>Cisco Networking Academy – Ethical Hacker</h3>
+         <img src="https://cdn.discordapp.com/attachments/856807500853805066/1438174334106599536/IMG_8556.jpg?ex=6915ebb9&is=69149a39&hm=dac2830ecd4d30ddf6398faad7bc4dd927b5f17d60e0caab3fe47cbfe380b10a&" 
+     alt="Certificate: Ethical Hacker" 
+     style="width:100%;max-width:700px;border-radius:12px">
+</div>
+
+<div class="card center">
+  <h3>Cisco Networking Academy – Introduction to Cybersecurity</h3>
+  <img src="https://cdn.discordapp.com/attachments/856807500853805066/1438174334681350255/IMG_8555.jpg?ex=6915ebb9&is=69149a39&hm=3a84e7e9854cc64c9a71186f7ef6df271b7deadcb35234edc192b87927afef75&" 
+       alt="Certificate: Cybersecurity" 
+       style="width:100%;max-width:700px;border-radius:12px">
+</div>
+</div>
+</section>
+
+    <!-- Goals -->
+    <section id="goals">
+      <h2 class="section-title">เป้าหมาย (Goals)</h2>
+      <div class="card">
+        <h3>เป้าหมายในอนาคต</h3>
+        <p class="muted">
+          สนใจเส้นทางสายงานด้าน IT/Tech โดยเฉพาะในสาขา AI, Data Science, Cybersecurity และ Web Development  
+          มุ่งมั่นพัฒนาทักษะเพื่อพร้อมสำหรับการทำงานจริง และต่อยอดสู่นักพัฒนาซอฟต์แวร์มืออาชีพในอนาคต
+        </p>
+      </div>
     </section>
 
     <!-- Contact -->
-    <section>
-      <h2>6. ติดต่อ (Contact)</h2>
-      <ul>
-        <li>Email: <a href="mailto:66040233151@udru.ac.th">66040233151@udru.ac.th</a></li>
-        <li>GitHub: <a href="https://github.com/tiwthansap" target="_blank">github.com/tiwthansap</a></li>
-        <li>LinkedIn: <a href="#">linkedin.com/in/thansap-hancheongchai</a></li>
-        <li>จังหวัด: อุดรธานี</li>
-      </ul>
+    <section id="contact">
+      <h2 class="section-title">ติดต่อ (Contact)</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <ul class="contact-list">
+            <li><i class="fa-regular fa-envelope"></i> <a href="mailto:66040233151@udru.ac.th">66040233151@udru.ac.th</a></li>
+            <li><i class="fa-brands fa-facebook"></i> Thansap hancheongchai</li>
+            <li><i class="fa-brands fa-instagram"></i> <a href="https://instagram.com/tiwthansap.h" target="_blank">tiwthansap.h</a></li>
+            <li><i class="fa-brands fa-github"></i> <a href="https://github.com/tiwthansap" target="_blank">https://github.com/tiwthansap</a></li>
+            <li><i class="fa-solid fa-phone"></i> 096-660-1048</li>
+            <li><i class="fa-solid fa-location-dot"></i>  อ.ภูเวียง จ.ขอนแก่น 40150 </li>
+          </ul>
+        </div>
+        <div class="card center">
+          <h3>QR Code สำหรับติดต่อ (LINE)</h3>
+          <img src="https://cdn.discordapp.com/attachments/856807500853805066/1438197181172416702/IMG_8558.jpg?ex=69160100&is=6914af80&hm=25c76f9527fb43ea9f580cb7276534e952a9f0464143d2f3cd1353e8ac03ccef&" 
+     alt="LINE QR" 
+     style="width:220px;max-width:100%;border-radius:12px">
+<p class="muted">สแกนเพื่อแอด LINE ได้ทันที</p>
+</div>
+      </div>
     </section>
-
-    <!-- Career -->
-    <section>
-      <h2>7. เป้าหมายในอนาคต (Career Interest)</h2>
-      <p>ต้องการทำงานในสาย Data Science / AI Engineer / Software Developer เพื่อพัฒนานวัตกรรมและสร้างสังคมที่ขับเคลื่อนด้วยเทคโนโลยี</p>
-    </section>
-
   </main>
 
   <footer>
-    <p>© 2025 สร้างโดย ฐานทรัพย์ หาญเชิงชัย | Portfolio GitHub.io</p>
+    <p>© <span id="year"></span> beemcraf • Designed by Naphat Wapeesiri</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.getElementById('toggleTheme');
+    function setTheme(mode){
+      document.documentElement.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      btn.innerHTML = mode==='light' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    }
+    setTheme(localStorage.getItem('theme') || 'light');
+    btn.addEventListener('click', ()=> {
+      const isDark = document.documentElement.getAttribute('data-theme')==='dark';
+      setTheme(isDark ? 'light' : 'dark');
+    });
+  </script>
+</
